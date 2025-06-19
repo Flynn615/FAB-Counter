@@ -26,28 +26,36 @@
             },
         };
     </script>
-    <style>
-        html {
-            height: 100%;
-        }
-        /* Apply Inter font family to the body */
-        body {
-            font-family: 'Inter', sans-serif;
-            margin: 0; /* Remove default body margin */
-            padding: 0; /* Remove default body padding */
-            height: 100%; /* Make body take 100% of html height */
-            /* Ensure the background covers the entire body, extending behind the status bar */
-            background: linear-gradient(to bottom right, #1a202c, #4a5568); /* Matches your app's main gradient */
-            overflow: hidden; /* Prevents scrollbars if content is within bounds */
-             #app-container {
-            padding-top: env(safe-area-inset-top);
-            padding-bottom: env(safe-area-inset-bottom);
-            padding-left: env(safe-area-inset-left);
-            padding-right: env(safe-area-inset-right);
-            /* Important: Keep your existing `p-4` as base padding, then add safe area insets */
-            /* You can adjust 'p-4' to a smaller base value if needed after adding safe areas */
-            }
-    </style>
+ <style>
+    /* MODIFICATION 3: CSS for html, body, and #app-container */
+    /* Ensure html and body take full viewport height and apply background */
+    html {
+        height: 100%;
+        /* overflow-hidden prevents scrolling if content exceeds screen height */
+    }
+    body {
+        font-family: 'Inter', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%; /* Make body take 100% of html height */
+        /* Ensure the background covers the entire body, extending behind the status bar */
+        background: linear-gradient(to bottom right, #1a202c, #4a5568); /* Matches your app's main gradient */
+        overflow: hidden; /* Prevents scrollbars if content is within bounds */
+    }
+
+    /* Apply padding to the main app container to account for safe areas */
+    /* `env(safe-area-inset-*)` provides the system-defined safe area insets */
+    /* This pushes content up from the home indicator on notched devices */
+    /* IMPORTANT: This rule is now OUTSIDE the body rule */
+    #app-container {
+        padding-top: env(safe-area-inset-top);
+        padding-bottom: env(safe-area-inset-bottom);
+        padding-left: env(safe-area-inset-left);
+        padding-right: env(safe-area-inset-right);
+        /* Important: Keep your existing `p-4` as base padding, then add safe area insets */
+        /* You can adjust 'p-4' to a smaller base value if needed after adding safe areas */
+    }
+</style>
 </head>
 <body>
     <!-- The root div where the React application will be rendered -->
